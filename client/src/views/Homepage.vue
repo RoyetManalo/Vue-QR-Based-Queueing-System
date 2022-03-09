@@ -38,8 +38,8 @@
 
 <script>
 // @ is an alias to /src
-import QueueService from "../QueueService";
-import StatusService from "../StatusService";
+import QueueService from "../services/QueueService";
+import StatusService from "../services/StatusService";
 export default {
   // inheritAttrs: false,
   name: "Homepage",
@@ -94,40 +94,40 @@ export default {
     this.imgURL = require("../assets/SECH LOGO.png");
   },
   // not working - i want to redirect page if status is true from lobby to queueclose then if false you cannot go to the queueclose route
-  async beforeRouteLeave(to, from) {
-    const statusRes = await StatusService.getStatus();
-    const statusData = statusRes.data;
-    const queueStatus = statusData[0].status;
-    console.log(queueStatus);
-    if (queueStatus === true) {
-      next({ name: "QueueClose" });
-    } else if (queueStatus === false) {
-      if (to.name === "QueueClose") {
-        next({ name: "Homepage" });
-      } else {
-        next();
-      }
-    } else {
-      next();
-    }
-    // const status = await this.getStatus();
-    // if ((await this.status) === true) {
-    //   // if queue is close
-    //   if (to.name === "Lobby") next({ name: "QueueClose" });
-    // } else if ((await this.status) === false) {
-    //   // if queue is open
-    //   if (to.name === "QueueClose") next({ name: "Homepage" });
-    //   else next();
-    // } else {
-    //   next();
-    // }
-    // if (this.$store.state.isQueueClose === false) {
-    //   if (to.name === "QueueClose") next({ name: "Homepage" });
-    //   else next();
-    // } else {
-    //   next();
-    // }
-  },
+  // async beforeRouteLeave(to, from, next) {
+  //   const statusRes = await StatusService.getStatus();
+  //   const statusData = statusRes.data;
+  //   const queueStatus = statusData[0].status;
+  //   console.log(queueStatus);
+  //   if (queueStatus === true) {
+  //     next({ name: "QueueClose" });
+  //   } else if (queueStatus === false) {
+  //     if (to.name === "QueueClose") {
+  //       next({ name: "Homepage" });
+  //     } else {
+  //       next();
+  //     }
+  //   } else {
+  //     next();
+  //   }
+  //   // const status = await this.getStatus();
+  //   // if ((await this.status) === true) {
+  //   //   // if queue is close
+  //   //   if (to.name === "Lobby") next({ name: "QueueClose" });
+  //   // } else if ((await this.status) === false) {
+  //   //   // if queue is open
+  //   //   if (to.name === "QueueClose") next({ name: "Homepage" });
+  //   //   else next();
+  //   // } else {
+  //   //   next();
+  //   // }
+  //   // if (this.$store.state.isQueueClose === false) {
+  //   //   if (to.name === "QueueClose") next({ name: "Homepage" });
+  //   //   else next();
+  //   // } else {
+  //   //   next();
+  //   // }
+  // },
 };
 </script>
 

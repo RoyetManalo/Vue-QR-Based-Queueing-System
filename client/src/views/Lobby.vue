@@ -19,7 +19,7 @@
 import Queuenumber from "../components/Queuenumber.vue";
 import Button from "../components/Button.vue";
 import Vaccines from "../components/Vaccines.vue";
-import VaccineService from "../../../admin/src/VaccineService";
+import VaccineService from "../services/VaccineService";
 
 export default {
   // inheritAttrs: false,

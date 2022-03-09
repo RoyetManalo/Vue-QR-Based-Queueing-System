@@ -56,8 +56,8 @@
 <script>
 // @ is an alias to /src
 import Button from "../components/Button.vue";
-import QueueService from "../QueueService";
-import VaccineService from "../VaccineService";
+import QueueService from "../services/QueueService";
+import VaccineService from "../services/VaccineService";
 export default {
   name: "Getqcard",
   components: {

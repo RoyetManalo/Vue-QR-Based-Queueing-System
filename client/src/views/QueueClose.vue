@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import QueueService from "../QueueService";
+import QueueService from "../services/QueueService";
 export default {
   // inheritAttrs: false,
   name: "QueueClose",

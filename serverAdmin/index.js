@@ -9,9 +9,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Set static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 const authRoutes = require("./routes/api/authentication");
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 const statusRoutes = require("./routes/api/status");
 app.use("/api/status", statusRoutes);
@@ -28,14 +29,5 @@ app.use("/api/vaccine", vaccineRoutes);
 const recentlyServedRoutes = require("./routes/api/recentlyServed");
 app.use("/api/recentlyserved", recentlyServedRoutes);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/api/static", express.static(path.join(__dirname, "imageStatic")));
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("public"));
-//   app.use("/images", express.static("img"));
-//   app.get(/.*/);
-// }
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running in PORT:${PORT}`));

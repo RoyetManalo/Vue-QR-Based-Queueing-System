@@ -87,8 +87,8 @@
 import QrScanner from "../components/QRScanner.vue";
 import Button from "../components/Button.vue";
 import Header from "../components/Header.vue";
-import QueueService from "../QueueService";
-import RecentlyServedService from "../RecentlyServedService";
+import QueueService from "../services/QueueService";
+import RecentlyServedService from "../services/RecentlyServedService";
 export default {
   name: "AdminScanQr",
   components: {

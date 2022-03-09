@@ -101,7 +101,7 @@ import CardNumber from "../components/CardNumber.vue";
 import Button from "../components/Button.vue";
 import IconButton from "../components/IconButton.vue";
 import CloseButton from "../components/CloseButton.vue";
-import QueueService from "../QueueService";
+import QueueService from "../services/QueueService";
 export default {
   name: "Queue",
   components: {

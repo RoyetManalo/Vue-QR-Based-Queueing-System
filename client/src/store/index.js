@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
-import QueueService from "../QueueService";
-import VaccineService from "../VaccineService";
-import StatusService from "../StatusService";
+import QueueService from "../services/QueueService";
+import VaccineService from "../services/VaccineService";
+import StatusService from "../services/StatusService";
 import e from "cors";
 
 export default createStore({

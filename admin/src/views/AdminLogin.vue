@@ -42,8 +42,8 @@
 <script>
 // @ is an alias to /src
 import Button from "../components/Button.vue";
-import AdminService from "../AdminService";
-import QueueService from "../QueueService";
+import AdminService from "../services/AdminService";
+import QueueService from "../services/QueueService";
 export default {
   name: "AdminLogin",
   components: {

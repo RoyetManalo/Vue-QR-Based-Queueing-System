@@ -16,8 +16,8 @@
 
 <script>
 import Header from "./components/Header.vue";
-import QueueService from "./QueueService";
-import StatusService from "./StatusService";
+import QueueService from "./services/QueueService";
+import StatusService from "./services/StatusService";
 import Announcement from "./components/Announcement.vue";
 export default {
   components: {

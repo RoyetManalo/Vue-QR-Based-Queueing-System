@@ -10,7 +10,7 @@
       <span>Full Name: {{ queueInfo.firstName }} {{ queueInfo.lastName }}</span>
       <span
         >Issuance Date and Time: <br />
-        {{ queueInfo.date }}</span
+        {{ getDate }}</span
       >
     </div>
     <div class="button">
@@ -25,7 +25,7 @@
 import Button from "../components/Button.vue";
 import Queuenumber from "../components/Queuenumber.vue";
 import Qr from "../components/Qr.vue";
-import QueueService from "../QueueService";
+import QueueService from "../services/QueueService";
 export default {
   name: "Qrcode",
   components: {
@@ -54,17 +54,58 @@ export default {
     },
   },
   computed: {
-    // queueInfo: {
-    //   get() {
-    //     return this.$store.state.newPersonInQueue;
-    //   },
-    // },
     queueInfo() {
       return this.$store.state.newPersonInQueue;
     },
+    getDate() {
+      const date = new Date(this.queueInfo.date);
+      const day = date.getDate();
+      const month = date.getMonth();
+      const year = date.getFullYear();
+      let hour = date.getHours();
+      const ampm = hour >= 12 ? "PM" : "AM";
+      hour = hour % 12;
+      hour = hour ? hour : 12;
+      let minute = date.getMinutes();
+      minute = minute < 10 ? "0" + minute : minute;
+
+      function formatMonth(month) {
+        if (month === 0) {
+          return "January";
+        } else if (month === 1) {
+          return "February";
+        } else if (month === 2) {
+          return "March";
+        } else if (month === 3) {
+          return "April";
+        } else if (month === 4) {
+          return "May";
+        } else if (month === 5) {
+          return "June";
+        } else if (month === 6) {
+          return "July";
+        } else if (month === 7) {
+          return "August";
+        } else if (month === 8) {
+          return "September";
+        } else if (month === 9) {
+          return "October";
+        } else if (month === 10) {
+          return "November";
+        } else if (month === 11) {
+          return "December";
+        }
+      }
+      return `${day}-${formatMonth(month)}-${year} ${hour}:${minute} ${ampm}`;
+    },
   },
-  created() {
-    this.imgSrc = require(`../assets/qrcodes/${this.queueNumber}-QRCODE.png`);
+  async created() {
+    // Set the qrcode image to the right path from the server  generated image
+    const res = await QueueService.getQrcodeImage(this.queueInfo.queueNumber);
+    const data = res.data;
+    const url = window.URL.createObjectURL(new Blob([data]));
+    this.imgSrc = url;
+    setTimeout(() => window.URL.revokeObjectURL(url), 0);
   },
 };
 </script>

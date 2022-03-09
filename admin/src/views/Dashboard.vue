@@ -26,7 +26,7 @@
 import Timendate from "../components/Timendate.vue";
 import CardRecentlyServed from "../components/CardRecentlyServed.vue";
 import CardNumber from "../components/CardNumber.vue";
-import RecentlyServedService from "../RecentlyServedService";
+import RecentlyServedService from "../services/RecentlyServedService";
 export default {
   name: "Dashboard",
   components: {

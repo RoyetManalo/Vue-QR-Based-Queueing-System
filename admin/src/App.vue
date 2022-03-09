@@ -189,9 +189,9 @@ import Header from "@/components/Header.vue";
 import Sidenav from "@/components/Sidenav.vue";
 import CloseButton from "@/components/CloseButton.vue";
 import Button from "@/components/Button.vue";
-import StatusService from "./StatusService";
-import AdminService from "./AdminService";
-import QueueService from "./QueueService";
+import StatusService from "./services/StatusService";
+import AdminService from "./services/AdminService";
+import QueueService from "./services/QueueService";
 export default {
   components: {
     Header,

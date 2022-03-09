@@ -134,7 +134,7 @@ import CardVaccine from "../components/CardVaccine.vue";
 import Button from "../components/Button.vue";
 import IconButton from "../components/IconButton.vue";
 import CloseButton from "../components/CloseButton.vue";
-import VaccineService from "../VaccineService";
+import VaccineService from "../services/VaccineService";
 export default {
   name: "Vaccines",
   components: {

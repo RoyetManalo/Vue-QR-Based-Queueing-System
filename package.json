@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/index",
     "dev": "nodemon server/index",
+    "dev2": "nodemon serverAdmin/index",
     "authDev": "nodemon server/authServer"
   },
   "keywords": [],

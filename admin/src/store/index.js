@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
-import QueueService from "../QueueService";
-import RecentlyServedService from "../RecentlyServedService";
-import VaccineService from "../VaccineService";
+import QueueService from "../services/QueueService";
+import RecentlyServedService from "../services/RecentlyServedService";
+import VaccineService from "../services/VaccineService";
 
 export default createStore({
   state: {

@@ -155,13 +155,7 @@ router.delete("/", authenticateToken, async (req, res) => {
 router.post("/downloadqr", (req, res) => {
   try {
     res.download(
-      path.join(
-        __dirname,
-        "../../",
-        "imageStatic",
-        "pdf",
-        "Queue Certificate.pdf"
-      )
+      path.join(__dirname, "../../", "public", "pdf", "Queue Certificate.pdf")
     );
     // res.json({message: 'QR Code Succesfully generated'})
     // res.download(path.join(__dirname, '../../', 'pdf', 'Queue Certificate.pdf'))  //too slow
@@ -201,8 +195,9 @@ function generateQR(queueInfo) {
   QRCode.toFile(
     path.join(
       __dirname,
-      "../../",
-      "imageStatic",
+      "../../../client",
+      "src",
+      "assets",
       "qrcodes",
       `${queueInfo.queueNumber}-QRCODE.png`
     ),
@@ -216,7 +211,7 @@ function generateQR(queueInfo) {
     },
     function (err) {
       if (err) throw err;
-      console.log("done generating qrcode");
+      console.log("done");
       generatePDF(queue1);
     }
   );
@@ -266,31 +261,21 @@ function generatePDF(queueInfo) {
   const doc = new PDFDocument();
   doc.pipe(
     fs.createWriteStream(
-      path.join(
-        __dirname,
-        "../../",
-        "imageStatic",
-        "pdf",
-        "Queue Certificate.pdf"
-      )
+      path.join(__dirname, "../../", "public", "pdf", "Queue Certificate.pdf")
     )
   );
-  doc.image(
-    path.join(__dirname, "../../", "imageStatic", `Logo.png`),
-    150,
-    10,
-    {
-      width: 300,
-      align: "center",
-      valign: "center",
-    }
-  );
+  doc.image(path.join(__dirname, "../../", "public", `logo.png`), 150, 10, {
+    width: 300,
+    align: "center",
+    valign: "center",
+  });
   doc
     .image(
       path.join(
         __dirname,
-        "../../",
-        "imageStatic",
+        "../../../client",
+        "src",
+        "assets",
         "qrcodes",
         `${queueInfo.queueNumber}-QRCODE.png`
       ),
@@ -336,18 +321,12 @@ function generatePDF(queueInfo) {
       width: 280,
     }
   );
-  doc.image(
-    path.join(__dirname, "../../", "imageStatic", `Footer.jpg`),
-    0,
-    700,
-    {
-      align: "center",
-      valign: "bottom",
-    }
-  );
+  doc.image(path.join(__dirname, "../../", "public", `Footer.jpg`), 0, 700, {
+    align: "center",
+    valign: "bottom",
+  });
   doc.end();
   console.log("Generate PDF");
-  console.log(__dirname);
 }
 
 async function getCurrentQueue(req, res, next) {

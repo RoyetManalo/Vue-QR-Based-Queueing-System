@@ -120,7 +120,7 @@
 // @ is an alias to /src
 import CardRecentlyServed from "../components/CardRecentlyServed.vue";
 import CardNumber from "../components/CardNumber.vue";
-import RecentlyServedService from "../RecentlyServedService";
+import RecentlyServedService from "../services/RecentlyServedService";
 import Button from "../components/Button.vue";
 import CloseButton from "../components/CloseButton.vue";
 export default {
