@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/api/vaccine/";
+const url = "api/vaccine/";
 
 class VaccineService {
   // Get Latest Posts

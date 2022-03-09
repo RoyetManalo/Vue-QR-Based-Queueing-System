@@ -1,11 +1,11 @@
-import axios from  'axios'
+import axios from "axios";
 
-const url = 'http://localhost:5000/api/status/'
+const url = "api/status/";
 
 class StatusService {
-    static getStatus(){
-        return axios.get(url)
-    }
+  static getStatus() {
+    return axios.get(url);
+  }
 }
 
-export default StatusService
+export default StatusService;
